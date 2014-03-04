@@ -1,0 +1,10 @@
+@media print {
+
+	#mainContainer {
+		display:none;
+	}
+	#croppedImages img {
+		margin:5px;
+	}
+
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Token Generator</title>
+    <link href="javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/javascript/jquery/jquery-1.11.0.min.js"></script>
+    <script src="/javascript/jcrop/jquery.Jcrop.min.js"></script>
+    <script src="javascript/json/json2.js"></script>
+    <script src="javascript/underscore/underscore.js"></script>
+    <script src="javascript/backbone/backbone.js"></script>
+    <script src="javascript/mustache/mustache.js"></script>
+    <script src="javascript/mustache/templates/TokenLibraryTemplates.js"></script>
+    <link rel="stylesheet" href="/css/jquery.Jcrop.min.css" type="text/css" />
+    <link rel="stylesheet" href="/css/TokenLibraryStyles.css" type="text/css" />
+
+    <script src="javascript/models/TokenLibrary/Character.js"></script>
+
+    <script src="javascript/views/TokenLibrary/CharacterView.js"></script>    
+  </head>
+
+  <body>
+    <div id="mainContainer">
+    
+    <!-- 
+
+    SELECT A CHARACTER
+      Show dropdown of all characters
+
+    EXISTING:
+      Show portrait
+      show button to add
+      Show button to remove from the library
+
+    NEW:
+      Show image upload tool
+      Show crop tool
+      Show save/add button
+
+    PORTRAIT:
+      show image
+      "remove" button
+      edit styles for printing to not show the remove button
+    
+    -->
+
+      <img src="http://paperandsteel.net/images/darth-vader.jpg" id="target" />
+      <div style="width:96px;height:153px;overflow:hidden">
+        <img src="http://paperandsteel.net/images/darth-vader.jpg" id="preview" />
+      </div>
+      <button id="getPortrait">Get Portrait Image</button>
+      <button id="getTokenImage">Get Token Image</button>
+    </div>
+    <div id="croppedImages"></div>
+<script src="javascript/bootstrap/js/bootstrap.min.js"></script>
+<script src="javascript/TokenLibrary.js"></script>
+  </body>
+</html>
+
+<!-- Character Token generator
+
+Standard (medium) size 25mm Wide x 40 mm Height
+Standard size seems to be 96 pixels of image per 1 inch (for printing)
+
+96 pixels wide for standard
+153 tall for standard
+
+
+upload image/URL
+  if uploading, upload, then return the file's URL
+Once Image URL is aquired, display and show cropping tool
