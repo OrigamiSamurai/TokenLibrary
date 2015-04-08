@@ -39,11 +39,11 @@ switch  ($command) {
     $targ_h = $payload->destinationHeight;
     $jpeg_quality = 90;
 
-    $src = $payload->sourceUrl;
+    $src = $payload->portraitUrl;
     $img_r = imagecreatefromjpeg($src);
     $dst_r = ImageCreateTrueColor( ($targ_w*2)+22, $targ_h+2);
 
-    // set background to white
+    // set background to white and add rectangle around outside
     $white = imagecolorallocate($dst_r, 255, 255, 255);
     $grey = imagecolorallocate($dst_r,200,200,200);
     imagefill($dst_r, 0, 0, $white);

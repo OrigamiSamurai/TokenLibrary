@@ -1,15 +1,28 @@
 //update to use HTML5 canvas to do image processing in-browser
-//NOTE: the image will need to be uploaded for the canvas to actually save the modified image
 
-var newCharacter = new Character({
+
+TL.vent = _.extend({}, Backbone.Events);
+
+var newCreature = new TL.Creature({
 	name: "Darth Vader",
-	imageUrl: "http://paperandsteel.net/images/darth-vader-portrait.jpg"
+	portraitImageUrl: "http://paperandsteel.net/images/darth-vader-portrait.jpg",
+  tokenImageUrl: "http://paperandsteel.net/images/darth-vader-portrait.jpg",
 });
 
-var newCharacterView = new CharacterView({model:newCharacter});
+var newCreatureCollection = new TL.CreatureCollection(newCreature);
+
+var newCreature2 = new TL.Creature({
+  name: "HerpDerp",
+  portraitImageUrl: "http://paperandsteel.net/images/darth-vader-portrait.jpg",
+  tokenImageUrl: "http://paperandsteel.net/images/darth-vader-portrait.jpg",
+});
+
+newCreatureCollection.add(newCreature2);
+
+var newTokenLibraryView = new TL.TokenLibraryView({collection:newCreatureCollection,vent:TL.vent});
 
 $(document).ready(function(){
-	$('#mainContainer').append(newCharacterView.el);
+	$('#mainContainer').append(newTokenLibraryView.el);
 })
 
 var cropCoords = {};
@@ -81,7 +94,10 @@ function php(command,payload,callback) {
   })
 }
 
-function createTokenImage(sourceUrl,x,y,w,h,destW,destH) {
+function createTokenImage(sourceUrl,x,y,w,h,destW,destH,elementId) {
+  //should create a printTokenView
+
+
   php(
     "CreateToken",
     {
@@ -112,21 +128,6 @@ function createPortraitImage(sourceUrl,x,y,w,h,destW,destH) {
     function(response){$("<img />").attr("src", "data:image/jpeg;base64,"+response).appendTo($('#croppedImages'))}
   )
 };
-
-$('#getTokenImage').on(
-  'click',
-  function() {
-    createTokenImage(
-      $('#target').attr('src'),
-      Math.floor(cropCoords.x),
-      Math.floor(cropCoords.y),
-      Math.floor(cropCoords.w),
-      Math.floor(cropCoords.h),
-      96,
-      153
-    )
-  }
-)
 
 $('#getPortrait').on(
   'click',
