@@ -1,0 +1,11 @@
+Todo:
+
+Add ability do grab an image from image URL and display it on the page
+Add ability to upload a file to server
+Add ability to return URL of uploaded file, then use it to display the image
+
+Add ability to create a creature from a name and portrait URL
+
+Investigate usage of token image URL (seems to be the same as portrait image URL for vader images)
+
+Add ability to crop image when creating creature (this will involve saving the cropped image, generating a filename/path, and returning it to populate the creature model)
