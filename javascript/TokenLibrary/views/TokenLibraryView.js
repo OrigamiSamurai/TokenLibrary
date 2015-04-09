@@ -11,7 +11,14 @@ TL.TokenLibraryView = Backbone.View.extend({
 
 	render: function() {
 		this.$el.html(Mustache.to_html(this.template));
+		
+		// add new creature view
+		var createCreatureView = new TL.CreateCreatureView();
+		this.$el.find('#createCreature').append(createCreatureView.el);
+
+		// add existing creature view
 		var creatureCollectionView = new TL.CreatureCollectionView({collection:this.collection, vent:this.vent});
+		TL.TEST = creatureCollectionView;
 		this.$el.find('#existingCreatures').append(creatureCollectionView.el);
 	},
 

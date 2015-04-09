@@ -1,5 +1,7 @@
 TL.CreatureCollectionView = Backbone.View.extend({
 	
+	className: "panel panel-default",
+
 	template: TL.templates.CreatureCollectionView,
 
 	initialize: function(options) {
@@ -13,7 +15,7 @@ TL.CreatureCollectionView = Backbone.View.extend({
 			function(creature) {
 				var creatureView = new TL.CreatureView({model:creature,vent:this.vent});
 				creatureView.render();
-				this.$el.append(creatureView.el);
+				this.$el.find(".panel-body").append(creatureView.el);
 			}
 			,
 			this

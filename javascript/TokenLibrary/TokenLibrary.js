@@ -1,6 +1,5 @@
 //update to use HTML5 canvas to do image processing in-browser
 
-
 TL.vent = _.extend({}, Backbone.Events);
 
 var newCreature = new TL.Creature({

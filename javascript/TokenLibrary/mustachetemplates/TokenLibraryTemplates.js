@@ -1,7 +1,10 @@
 TL.templates = [];
 
 TL.templates.CreatureCollectionView = [
-	""
+	"<div class=\"panel-heading\">",
+		"<span class=\"panel-title\">Choose an existing Creature:</span>",
+	"</div>",
+	"<div class=\"panel-body\"></div>"
 ].join("");
 
 TL.templates.CreatureTokenView = [
@@ -17,14 +20,18 @@ TL.templates.CreatureView = [
 ].join("");
 
 TL.templates.CreateCreatureView = [
-	"Create a character:",
+	"<div class=\"panel-heading\">",
+		"<span class=\"panel-title\">Create a character:</span>",
+	"</div>",
+	"<div class=\"panel-body\">",
 	"<input type=\"text\" id=\"newTokenName\"></input>",
 	"IMAGE URL or FILE UPLOAD GOES HERE : ",
-	"THIS IS WHERE THE IMAGE WILL SHOW"
+	"THIS IS WHERE THE IMAGE WILL SHOW",
+	"</div>"
 ].join("");
 
 TL.templates.TokenLibraryView = [
 	"<div>Library:</div>",
-	"<div>control to create new goes here</div>",
-	"<div id=\"existingCreatures\">control to select existing goes here</div>"
+	"<div id=\"createCreature\"></div>",
+	"<div id=\"existingCreatures\"></div>"
 ].join("");

@@ -1,6 +1,8 @@
 //update to use HTML5 canvas to do image processing in-browser
 //NOTE: the image will need to be uploaded for the canvas to actually save the modified image
 
+/*
+
 var newCharacter = new Character({
 	name: "Darth Vader",
 	imageUrl: "http://paperandsteel.net/images/darth-vader-portrait.jpg"
@@ -142,3 +144,5 @@ $('#getPortrait').on(
     )
   }
 )
+
+*/
