@@ -58,7 +58,12 @@ TL.CreateCreatureView = Backbone.View.extend({
 	            $('#newCreaturePortraitUrl').val(responseData.ImageUrl);
 	            if (responseData.Status == "Success")
 	            {
+	            	$('#uploadStatus').text('');
 	            	this.setBaseImagePreviewSrc(responseData.ImageUrl);	
+	            }
+	            else
+	            {
+	            	$('#uploadStatus').text(responseData.Message);
 	            }
 	            
 	        }

@@ -40,6 +40,7 @@ TL.templates.CreateCreatureView = [
 		"</div>",
 		"<div>",
 			"<button type=\"button\" class=\"btn btn-1g btn-default\" id=\"createCreatureButton\">Create!</button>",
+			"<div id=\"uploadStatus\"></div>",
 		"</div>",
 	"</div>"
 ].join("");
