@@ -1,14 +1,16 @@
 //update to use HTML5 canvas to do image processing in-browser
 
+
+// Create custom event handler (use vent.trigger and vent.bind)
 TL.vent = _.extend({}, Backbone.Events);
 
+//Create Sample Creatures
 var newCreature = new TL.Creature({
 	name: "Darth Vader",
 	portraitImageUrl: "http://paperandsteel.net/images/darth-vader-portrait.jpg",
   tokenImageUrl: "http://paperandsteel.net/images/darth-vader-portrait.jpg",
 });
 
-var newCreatureCollection = new TL.CreatureCollection(newCreature);
 
 var newCreature2 = new TL.Creature({
   name: "HerpDerp",
@@ -16,14 +18,25 @@ var newCreature2 = new TL.Creature({
   tokenImageUrl: "http://paperandsteel.net/images/darth-vader-portrait.jpg",
 });
 
+// Add sample character to the collection
+var newCreatureCollection = new TL.CreatureCollection(newCreature);
 newCreatureCollection.add(newCreature2);
 
+// Create a view for the character library
 var newTokenLibraryView = new TL.TokenLibraryView({collection:newCreatureCollection,vent:TL.vent});
 
+// Insantiate the library view
 $(document).ready(function(){
 	$('#mainContainer').append(newTokenLibraryView.el);
 })
 
+
+
+
+
+
+
+// Utility Functions
 var cropCoords = {};
 
 function showPreview(coords) {

@@ -3,15 +3,18 @@ TL.CreateCreatureView = Backbone.View.extend({
 	className: "panel panel-default",
 
 	events: {
-		"click #setNewTokenImageURLButton":"setBaseImagePreviewSrcFromField",
-		"click #uploadNewTokenImageButton":"uploadNewTokenImageButton"
+		"click #setNewCreaturePortraitURLButton":"setBaseImagePreviewSrcFromField",
+		"click #uploadNewTokenImageButton":"uploadNewTokenImageButton",
+		"click #createCreatureButton":"createCreaturePublish"
 	},
 
 	template: TL.templates.CreateCreatureView,
 
-	initialize: function() {
+	initialize: function(options) {
+		// bring in event framework
+		this.vent = options.vent;
 		// bind setBaseImagePreviewSrc to always use this view as context - for ajax callback
-		_.bindAll(this, 'setBaseImagePreviewSrc');
+		_.bindAll(this, 'setBaseImagePreviewSrc', 'createCreaturePublish');
 		this.render();
 	},
 
@@ -19,12 +22,22 @@ TL.CreateCreatureView = Backbone.View.extend({
 		this.$el.html(Mustache.to_html(this.template));
 	},
 
+	createCreaturePublish: function() {
+		// publish event that a creature has been added with args
+		this.vent.trigger(
+			"createCreatureButtonClicked", //event name
+			$('#newCreatureName').val(), // arg 1
+			$('#baseImagePreview').attr("src"), // arg 2 - portrait URL
+			$('#baseImagePreview').attr("src")  // arg 3
+			)
+	},
+
 	setBaseImagePreviewSrc: function(src) {
 		$('#baseImagePreview').attr("src",src);
 	},
 
 	setBaseImagePreviewSrcFromField: function() {
-		this.setBaseImagePreviewSrc($('#newTokenImageUrl').val());
+		this.setBaseImagePreviewSrc($('#newCreaturePortraitUrl').val());
 	},
 
 	uploadNewTokenImageButton: function() {
@@ -42,7 +55,7 @@ TL.CreateCreatureView = Backbone.View.extend({
 	            
 	            var responseData = JSON.parse(ajax.responseText);
 
-	            $('#newTokenImageUrl').val(responseData.ImageUrl);
+	            $('#newCreaturePortraitUrl').val(responseData.ImageUrl);
 	            if (responseData.Status == "Success")
 	            {
 	            	this.setBaseImagePreviewSrc(responseData.ImageUrl);	

@@ -1,5 +1,7 @@
 TL.CreatureView = Backbone.View.extend({
 
+	className: "creatureContainer",
+
 	events: {
 		"click .addToken":"addToken"
 	},
@@ -15,7 +17,7 @@ TL.CreatureView = Backbone.View.extend({
 	},
 
 	addToken: function() {
-    this.vent.trigger("tokenAdded",this.model);
+    this.vent.trigger("tokenAddRequest",this.model);
   }
 
 })

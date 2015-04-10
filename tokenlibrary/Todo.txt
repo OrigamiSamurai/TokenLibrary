@@ -4,10 +4,18 @@ Todo:
 *Add ability to upload a file to server
 *Add ability to return URL of uploaded file, then use it to display the image
 
-Add ability to create a creature from a name and portrait URL
+*Add ability to create a creature from a name and portrait URL (no cropping)
 
 Investigate usage of token image URL (seems to be the same as portrait image URL for vader images)
+--probably legacy from when original thought was to save portrait AND token images
+--triviality of token generation makes this obsolete
 
 Add ability to crop image when creating creature (this will involve saving the cropped image, generating a filename/path, and returning it to populate the creature model)
+
+Style create creature
+
+Style library
+
+Style Token list
 
 Create top-nav to switch between creating new creatures, selecting from existing, and viewing selection
